@@ -130,6 +130,10 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\downArrowDisabled.png" />
+    <Content Include="Assets\downArrowEnabled.png" />
+    <Content Include="Assets\upArrowDisabled.png" />
+    <Content Include="Assets\upArrowEnabled.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

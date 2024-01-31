@@ -3,5 +3,21 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:DylanDeSouzaVictorianMoneyTracker">
-
+    <Application.Resources>
+        <Style x:Name="stackedLabels" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Vertical"/>
+        </Style>
+        <Style x:Name="baseLabel" TargetType="TextBlock">
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+        <DataTemplate x:Key="amountPerCurrencyTemplate">
+            <StackPanel Style="{StaticResource stackedLabels}">
+                <TextBlock Style="{StaticResource baseLabel}" Text="{Binding amount}"/>
+                <TextBlock Style="{StaticResource baseLabel}" Text="{Binding currency}"/>
+            </StackPanel>
+        </DataTemplate>
+        <Style x:Name="labelWithImageButton" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal"/>
+        </Style>
+    </Application.Resources>
 </Application>
