@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using static System.Net.Mime.MediaTypeNames;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -25,11 +26,11 @@ namespace DylanDeSouzaVictorianMoneyTracker
         public MainPage()
         {
             this.InitializeComponent();
-        }
-
-        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
+            //currencyTextBlock.Text in row 1 is pounds
+            //currencyTextBlock.Text in row 2 is crowns
+            //currencyTextBlock.Text in row 3 is shilling
+            //currencyTextBlock.Text in row 4 is pence
+            //currencyTextBlock.Text in row 5 is farthing
         }
     }
 }

@@ -4,20 +4,29 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:DylanDeSouzaVictorianMoneyTracker">
     <Application.Resources>
-        <Style x:Name="stackedLabels" TargetType="StackPanel">
-            <Setter Property="Orientation" Value="Vertical"/>
-        </Style>
-        <Style x:Name="baseLabel" TargetType="TextBlock">
+        <Style x:Name="baseTextBlock" TargetType="TextBlock">
             <Setter Property="TextAlignment" Value="Center"/>
         </Style>
+        <Style x:Name="arrowButton" TargetType="Button">
+            <Setter Property="Content" Value="{Binding arrow}"/>
+        </Style>
         <DataTemplate x:Key="amountPerCurrencyTemplate">
-            <StackPanel Style="{StaticResource stackedLabels}">
-                <TextBlock Style="{StaticResource baseLabel}" Text="{Binding amount}"/>
-                <TextBlock Style="{StaticResource baseLabel}" Text="{Binding currency}"/>
+            <StackPanel Orientation ="Vertical">
+                <TextBlock Style="{StaticResource baseTextBlock}" x:Name ="amountTextBlock"/>
+                <TextBlock Style="{StaticResource baseTextBlock}" x:Name ="currencyTextBlock"/>
             </StackPanel>
         </DataTemplate>
-        <Style x:Name="labelWithImageButton" TargetType="StackPanel">
-            <Setter Property="Orientation" Value="Horizontal"/>
-        </Style>
+        <DataTemplate x:Key="TextBlockWithButtonTemplate">
+            <StackPanel Orientation ="Horizontal">
+                <TextBlock Style="{StaticResource baseTextBlock}" Text="-"/>
+                <Button Click="ClickArrow"  Style="{StaticResource arrowButton}"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="ButtonWithTextBlockTemplate">
+            <StackPanel Orientation ="Horizontal">
+                <Button Click="ClickArrow"  Style="{StaticResource arrowButton}"/>
+                <TextBlock Style="{StaticResource baseTextBlock}" Text="+"/>
+            </StackPanel>
+        </DataTemplate>
     </Application.Resources>
 </Application>
