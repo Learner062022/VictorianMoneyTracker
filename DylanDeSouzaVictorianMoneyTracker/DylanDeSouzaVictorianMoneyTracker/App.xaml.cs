@@ -96,10 +96,5 @@ namespace DylanDeSouzaVictorianMoneyTracker
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
-
-        private void ClickArrow(object sender, RoutedEventArgs e)
-        {
-            // Perform subtraction if sender is in the second column else perform addition
-        }
     }
 }

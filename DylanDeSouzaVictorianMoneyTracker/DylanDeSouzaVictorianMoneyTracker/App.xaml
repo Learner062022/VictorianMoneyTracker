@@ -3,30 +3,4 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:DylanDeSouzaVictorianMoneyTracker">
-    <Application.Resources>
-        <Style x:Name="baseTextBlock" TargetType="TextBlock">
-            <Setter Property="TextAlignment" Value="Center"/>
-        </Style>
-        <Style x:Name="arrowButton" TargetType="Button">
-            <Setter Property="Content" Value="{Binding arrow}"/>
-        </Style>
-        <DataTemplate x:Key="amountPerCurrencyTemplate">
-            <StackPanel Orientation ="Vertical">
-                <TextBlock Style="{StaticResource baseTextBlock}" x:Name ="amountTextBlock"/>
-                <TextBlock Style="{StaticResource baseTextBlock}" x:Name ="currencyTextBlock"/>
-            </StackPanel>
-        </DataTemplate>
-        <DataTemplate x:Key="TextBlockWithButtonTemplate">
-            <StackPanel Orientation ="Horizontal">
-                <TextBlock Style="{StaticResource baseTextBlock}" Text="-"/>
-                <Button Click="ClickArrow"  Style="{StaticResource arrowButton}"/>
-            </StackPanel>
-        </DataTemplate>
-        <DataTemplate x:Key="ButtonWithTextBlockTemplate">
-            <StackPanel Orientation ="Horizontal">
-                <Button Click="ClickArrow"  Style="{StaticResource arrowButton}"/>
-                <TextBlock Style="{StaticResource baseTextBlock}" Text="+"/>
-            </StackPanel>
-        </DataTemplate>
-    </Application.Resources>
 </Application>

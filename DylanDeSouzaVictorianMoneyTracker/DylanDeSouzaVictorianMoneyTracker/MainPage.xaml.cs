@@ -32,5 +32,10 @@ namespace DylanDeSouzaVictorianMoneyTracker
             //currencyTextBlock.Text in row 4 is pence
             //currencyTextBlock.Text in row 5 is farthing
         }
+
+        private void ClickArrow(object sender, RoutedEventArgs e)
+        {
+            // Perform subtraction if sender is in the second column else perform addition
+        }
     }
 }
