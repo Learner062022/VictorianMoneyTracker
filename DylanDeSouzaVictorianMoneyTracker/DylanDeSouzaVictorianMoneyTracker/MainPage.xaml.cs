@@ -21,11 +21,20 @@ namespace DylanDeSouzaVictorianMoneyTracker
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+    
     public sealed partial class MainPage : Page
     {
         public MainPage()
         {
             this.InitializeComponent();
+            public static readonly Dictionary<string, int> currencyInFarthings = new Dictionary<string, int>
+            {
+                {"pound", 4 * 5 * 12 * 4}, // 1 pound = 960 farthings
+                {"crown", 5 * 12 * 4},     // 1 crown = 240 farthings
+                {"shilling", 12 * 4},      // 1 shilling = 48 farthings
+                {"penny", 4},              // 1 penny = 4 farthings
+                {"farthing", 1}            // Base unit
+            };
             //currencyTextBlock.Text in row 1 is pounds
             //currencyTextBlock.Text in row 2 is crowns
             //currencyTextBlock.Text in row 3 is shilling
