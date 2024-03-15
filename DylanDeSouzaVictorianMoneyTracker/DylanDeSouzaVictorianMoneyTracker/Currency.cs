@@ -5,6 +5,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Networking.BackgroundTransfer;
+using Windows.UI.Xaml.Media.Animation;
+using static System.Collections.Specialized.BitVector32;
 
 namespace DylanDeSouzaVictorianMoneyTracker
 {
@@ -30,6 +33,44 @@ namespace DylanDeSouzaVictorianMoneyTracker
             ConvertFromFarthings(totalFarthings);
         }
 
+        // Implement the event handlers for the plus and minus buttons to modify the amount of each currency type.
+        // Implement the event handlers for the arrow buttons to handle the conversion logic between different currency denominations.
+        // Check currency can be converted to a higher denomination.
+        // Disable buttons when conversion is impossible.
+        // Pluralization of currency names.
+        // Explain functions' purpose and key sections.
+        // Bind UI elements to properties
+        // UI's design
+
+        public bool CanConvertToHigherDenomination(string denomination)
+        {
+            bool canConvert = false;
+            switch (denomination)
+            {
+                case "pounds":
+                    canConvert = Crowns * (int)CurrencyInFarthings.Crown >= (int)CurrencyInFarthings.Pound;
+                    break;
+                case "crowns":
+                    canConvert = Shillings * (int)CurrencyInFarthings.Shilling >= (int)CurrencyInFarthings.Crown;
+                    break;
+                case "shillings":
+                    canConvert = Pence * (int)CurrencyInFarthings.Penny >= (int)CurrencyInFarthings.Shilling;
+                    break;
+                case "pence":
+                    canConvert = Farthings * (int)CurrencyInFarthings.Farthing >= (int)CurrencyInFarthings.Pound; 
+                    break;
+                case "farthings":
+                    canConvert = Farthings >= (int)CurrencyInFarthings.Penny;
+                    break;
+            }
+            return canConvert;
+        }
+
+        public int CalculateTotalWorth()
+        {
+            return (Pounds * (int)CurrencyInFarthings.Pound + Crowns * (int)CurrencyInFarthings.Crown + Shillings * (int)CurrencyInFarthings.Shilling + Pence * (int)CurrencyInFarthings.Penny + Farthings); 
+        }
+
         public void ConvertFromFarthings(int totalFarthings)
         {
             Pounds = totalFarthings / (int)CurrencyInFarthings.Pound;
@@ -47,7 +88,7 @@ namespace DylanDeSouzaVictorianMoneyTracker
         public static int ConvertToFarthings(int amount, string denomination)
         {
             int amountInFarthings = 0;
-            switch (denomination.ToLower())
+            switch (denomination)
             {
                 case "pounds":
                     amountInFarthings = amount * (int)CurrencyInFarthings.Pound;
