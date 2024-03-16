@@ -35,7 +35,6 @@ namespace DylanDeSouzaVictorianMoneyTracker
 
         // Implement the event handlers for the plus and minus buttons to modify the amount of each currency type.
         // Implement the event handlers for the arrow buttons to handle the conversion logic between different currency denominations.
-        // Check currency can be converted to a higher denomination.
         // Disable buttons when conversion is impossible.
         // Pluralization of currency names.
         // Explain functions' purpose and key sections.
@@ -51,7 +50,7 @@ namespace DylanDeSouzaVictorianMoneyTracker
                     canConvert = Crowns * (int)CurrencyInFarthings.Crown >= (int)CurrencyInFarthings.Pound;
                     break;
                 case "crowns":
-                    canConvert = Shillings * (int)CurrencyInFarthings.Shilling >= (int)CurrencyInFarthings.Crown;
+                    canConvert = Shillings * (int)CurrencyInFarthings.Shilling >= (int)CurrencyInFarthings.Crown; 
                     break;
                 case "shillings":
                     canConvert = Pence * (int)CurrencyInFarthings.Penny >= (int)CurrencyInFarthings.Shilling;

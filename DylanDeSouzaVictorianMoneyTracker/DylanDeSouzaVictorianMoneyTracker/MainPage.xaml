@@ -8,99 +8,92 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.Resources>
-        <Style x:Name="baseTextBlock" TargetType="TextBlock">
+        <Style x:Key="BaseTextBlockStyle" TargetType="TextBlock">
             <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
-        <Style x:Name="arrowButton" TargetType="Button">
-            <Setter Property="Content" Value="{Binding arrow}"/>
+
+        <Style x:Key="BaseButtonStyle" TargetType="Button">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
-        <ControlTemplate x:Key="amountPerCurrencyTemplate">
-            <StackPanel Orientation ="Vertical">
-                <TextBlock Style="{StaticResource baseTextBlock}" x:Name ="amountTextBlock"/>
-                <TextBlock Style="{StaticResource baseTextBlock}" x:Name ="currencyTextBlock"/>
-            </StackPanel>
-        </ControlTemplate>
+
         <ControlTemplate x:Key="TextBlockWithButtonTemplate">
-            <StackPanel Orientation ="Horizontal">
-                <TextBlock Style="{StaticResource baseTextBlock}" Text="-"/>
-                <Button Click="ClickArrow"  Style="{StaticResource arrowButton}"/>
-            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Style="{StaticResource BaseTextBlockStyle}" Text="-"/>
+                <Button Grid.Column="1" Style="{StaticResource BaseButtonStyle}" Click="ClickArrow"/>
+            </Grid>
         </ControlTemplate>
+
         <ControlTemplate x:Key="ButtonWithTextBlockTemplate">
-            <StackPanel Orientation ="Horizontal">
-                <Button Click="ClickArrow"  Style="{StaticResource arrowButton}"/>
-                <TextBlock Style="{StaticResource baseTextBlock}" Text="+"/>
-            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Style="{StaticResource BaseButtonStyle}" Click="ClickArrow"/>
+                <TextBlock Grid.Column="1" Style="{StaticResource BaseTextBlockStyle}" Text="+"/>
+            </Grid>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="AmountPerCurrencyTemplate">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Style="{StaticResource BaseTextBlockStyle}" x:Name="AmountTextBlock" Grid.Column="1"/>
+                <TextBlock Grid.Row="1" Style="{StaticResource BaseTextBlockStyle}" x:Name="CurrencyTextBlock" Grid.Column="1"/>
+            </Grid>
         </ControlTemplate>
     </Page.Resources>
 
-    <Grid Margin="-1,0,1,0">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
-            <Grid Grid.Row="0" Grid.ColumnSpan="3">
-                
-            </Grid>
-            <Grid Grid.Row="1">
-                <ContentControl Template="{StaticResource TextBlockWithButtonTemplate}"/>
-            </Grid>
-            <Grid Grid.Row="2">
-                <ContentControl Template="{StaticResource TextBlockWithButtonTemplate}"/>
-            </Grid>
-            <Grid Grid.Row="3">
-                <ContentControl Template="{StaticResource TextBlockWithButtonTemplate}"/>
-            </Grid>
-            <Grid Grid.Row="4">
-                <ContentControl Template="{StaticResource TextBlockWithButtonTemplate}"/>
-            </Grid>
-            <Grid Grid.Row="5">
-                <ContentControl Template="{StaticResource TextBlockWithButtonTemplate}"/>
-            </Grid>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="TotalWorthValue" Style="{StaticResource BaseTextBlockStyle}" Grid.Row="0"/>
+            <TextBlock Text="Total Worth" Style="{StaticResource BaseTextBlockStyle}" Grid.Row="1"/>
         </Grid>
-        <Grid Grid.Column="1">
-            <Grid Grid.Row="1">
-                <ContentControl Template="{StaticResource amountPerCurrencyTemplate}"/>
-            </Grid>
-            <Grid Grid.Row="2">
-                <ContentControl Template="{StaticResource amountPerCurrencyTemplate}"/>
-            </Grid>
-            <Grid Grid.Row="3">
-                <ContentControl Template="{StaticResource amountPerCurrencyTemplate}"/>
-            </Grid>
-            <Grid Grid.Row="4">
-                <ContentControl Template="{StaticResource amountPerCurrencyTemplate}"/>
-            </Grid>
-            <Grid Grid.Row="5">
-                <ContentControl Template="{StaticResource amountPerCurrencyTemplate}"/>
-            </Grid>
-        </Grid>
-        <Grid Grid.Column="2">
-            <Grid Grid.Row="1">
-                <ContentControl Template="{StaticResource ButtonWithTextBlockTemplate}"/>
-            </Grid>
-            <Grid Grid.Row="2">
-                <ContentControl Template="{StaticResource ButtonWithTextBlockTemplate}"/>
-            </Grid>
-            <Grid Grid.Row="3">
-                <ContentControl Template="{StaticResource ButtonWithTextBlockTemplate}"/>
-            </Grid>
-            <Grid Grid.Row="4">
-                <ContentControl Template="{StaticResource ButtonWithTextBlockTemplate}"/>
-            </Grid>
-            <Grid Grid.Row="5">
-                <ContentControl Template="{StaticResource ButtonWithTextBlockTemplate}"/>
-            </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ContentControl Template="{StaticResource TextBlockWithButtonTemplate}" Grid.Row="0"/>
+            <ContentControl Template="{StaticResource TextBlockWithButtonTemplate}" Grid.Row="1"/>
+            <ContentControl Template="{StaticResource TextBlockWithButtonTemplate}" Grid.Row="2"/>
+            <ContentControl Template="{StaticResource TextBlockWithButtonTemplate}" Grid.Row="3"/>
+            <ContentControl Template="{StaticResource TextBlockWithButtonTemplate}" Grid.Row="4"/>
+            <ContentControl Template="{StaticResource AmountPerCurrencyTemplate}" Grid.Row="0" Grid.Column="1"/>
+            <ContentControl Template="{StaticResource AmountPerCurrencyTemplate}" Grid.Row="1" Grid.Column="1"/>
+            <ContentControl Template="{StaticResource AmountPerCurrencyTemplate}" Grid.Row="2" Grid.Column="1"/>
+            <ContentControl Template="{StaticResource AmountPerCurrencyTemplate}" Grid.Row="3" Grid.Column="1"/>
+            <ContentControl Template="{StaticResource AmountPerCurrencyTemplate}" Grid.Row="4" Grid.Column="1"/>
+            <ContentControl Template="{StaticResource ButtonWithTextBlockTemplate}" Grid.Row="0" Grid.Column="2"/>
+            <ContentControl Template="{StaticResource ButtonWithTextBlockTemplate}" Grid.Row="1" Grid.Column="2"/>
+            <ContentControl Template="{StaticResource ButtonWithTextBlockTemplate}" Grid.Row="2" Grid.Column="2"/>
+            <ContentControl Template="{StaticResource ButtonWithTextBlockTemplate}" Grid.Row="3" Grid.Column="2"/>
+            <ContentControl Template="{StaticResource ButtonWithTextBlockTemplate}" Grid.Row="4" Grid.Column="2"/>
         </Grid>
     </Grid>
 </Page>
