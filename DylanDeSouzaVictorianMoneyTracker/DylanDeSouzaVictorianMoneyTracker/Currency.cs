@@ -80,8 +80,10 @@ namespace DylanDeSouzaVictorianMoneyTracker
             Shillings = remainder / (int)CurrencyInFarthings.Shilling;
             remainder %= (int)CurrencyInFarthings.Shilling;
 
-            Pence = remainder / (int)CurrencyInFarthings.Penny;
-            Farthings = remainder % (int)CurrencyInFarthings.Penny;
+            if (isAdding && CanConvertToHigherDenomination(currencyType))
+            {
+                ConvertCurrency(currencyType, currencyType + 1, currencyValues[currencyType] / (int)currencyType); // Convert all units to the next higher denomination if possible
+            }
         }
 
         public static int ConvertToFarthings(int amount, string denomination)
